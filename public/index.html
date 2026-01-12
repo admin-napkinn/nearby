@@ -1,33 +1,63 @@
 <!DOCTYPE html>
-<html>
-<head><title>Nearest School Finder</title></head>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Find Nearest School</title>
+  <link rel="stylesheet" href="/styles.css" />
+</head>
 <body>
-<h1>Find Nearest Schools</h1>
-<form id="form">
-  <input id="name" placeholder="Your name" required>
-  <input id="home_zip" placeholder="ZIP code" required>
-  <button>Find</button>
-</form>
-<div id="results"></div>
-<script>
-const results = document.getElementById("results");
-document.getElementById("form").onsubmit = async e => {
-  e.preventDefault();
-  const name = document.getElementById("name").value;
-  const home_zip = document.getElementById("home_zip").value;
-  const resp = await fetch("/nearest-schools", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ name, home_zip })
-  });
-  const data = await resp.json();
-  if (data.error) results.innerText = data.error;
-  else {
-    results.innerHTML = data.nearestSchools
-      .map(s => `${s.name} (${s.category}) — ${s.distance.toFixed(2)} miles`)
-      .join("<br>");
-  }
-};
-</script>
+  <div class="container">
+    <h1>Nearest School Finder</h1>
+    <p class="subtitle">
+      Enter your name and ZIP code to find the closest schools.
+    </p>
+
+    <form id="schoolForm">
+      <div>
+        <label>Name</label>
+        <input type="text" id="name" required />
+      </div>
+
+      <div>
+        <label>Home ZIP Code</label>
+        <input type="text" id="home_zip" required />
+      </div>
+
+      <button type="submit">Find Schools</button>
+    </form>
+
+    <div class="results" id="results"></div>
+  </div>
+
+  <script>
+    const form = document.getElementById("schoolForm");
+    const results = document.getElementById("results");
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      results.innerHTML = "Loading...";
+
+      const res = await fetch("/nearest-schools", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: document.getElementById("name").value,
+          home_zip: document.getElementById("home_zip").value
+        })
+      });
+
+      const data = await res.json();
+
+      results.innerHTML = "<h2>Closest Schools</h2>";
+      data.nearestSchools.forEach((s) => {
+        results.innerHTML += `
+          <div class="school">
+            <strong>${s.name}</strong>
+            <span>${s.distance.toFixed(2)} miles away</span>
+          </div>
+        `;
+      });
+    });
+  </script>
 </body>
 </html>
