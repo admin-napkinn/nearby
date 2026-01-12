@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head><title>Nearest School Finder</title></head>
+<body>
+<h1>Find Nearest Schools</h1>
+<form id="form">
+  <input id="name" placeholder="Your name" required>
+  <input id="home_zip" placeholder="ZIP code" required>
+  <button>Find</button>
+</form>
+<div id="results"></div>
+<script>
+const results = document.getElementById("results");
+document.getElementById("form").onsubmit = async e => {
+  e.preventDefault();
+  const name = document.getElementById("name").value;
+  const home_zip = document.getElementById("home_zip").value;
+  const resp = await fetch("/nearest-schools", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ name, home_zip })
+  });
+  const data = await resp.json();
+  if (data.error) results.innerText = data.error;
+  else {
+    results.innerHTML = data.nearestSchools
+      .map(s => `${s.name} (${s.category}) — ${s.distance.toFixed(2)} miles`)
+      .join("<br>");
+  }
+};
+</script>
+</body>
+</html>
