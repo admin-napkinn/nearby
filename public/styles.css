@@ -13,47 +13,47 @@
       "Segoe UI", Roboto, Inter, Helvetica, Arial, sans-serif;
     background: #f3f4f6;
     color: #111827;
-    line-height: 1.55;
+    line-height: 1.65;
   }
   
   /* ===== Layout ===== */
   .container {
-    padding: 20px 16px 28px;
+    padding: 32px 24px 40px;
     max-width: 100%;
   }
   
   /* ===== Header ===== */
   h1 {
-    font-size: 1.35rem;
+    font-size: 2.05rem; /* ↑ 50% */
     font-weight: 600;
-    margin-bottom: 6px;
+    margin-bottom: 12px;
   }
   
   .subtitle {
-    font-size: 0.9rem;
+    font-size: 1.35rem; /* ↑ 50% */
     color: #6b7280;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
   }
   
   /* ===== Form ===== */
   form {
     display: flex;
     flex-direction: column;
-    gap: 14px;
+    gap: 22px;
   }
   
   label {
-    font-size: 0.8rem;
+    font-size: 1.2rem; /* ↑ 50% */
     font-weight: 600;
-    margin-bottom: 4px;
+    margin-bottom: 8px;
     display: block;
   }
   
   input {
     width: 100%;
-    padding: 14px 12px;
-    font-size: 1rem;
-    border-radius: 10px;
+    padding: 22px 18px;
+    font-size: 1.5rem; /* ↑ 50% */
+    border-radius: 16px;
     border: 1px solid #d1d5db;
     background: #ffffff;
   }
@@ -61,16 +61,16 @@
   input:focus {
     outline: none;
     border-color: #2563eb;
-    box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.25);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.25);
   }
   
   /* ===== Button ===== */
   button {
-    margin-top: 10px;
-    padding: 16px;
-    font-size: 1rem;
+    margin-top: 16px;
+    padding: 26px;
+    font-size: 1.5rem; /* ↑ 50% */
     font-weight: 600;
-    border-radius: 12px;
+    border-radius: 18px;
     border: none;
     color: #ffffff;
     background: #2563eb;
@@ -78,35 +78,35 @@
   }
   
   button:active {
-    transform: scale(0.98);
+    transform: scale(0.97);
   }
   
   /* ===== Results ===== */
   .results {
-    margin-top: 26px;
+    margin-top: 40px;
   }
   
   .results h2 {
-    font-size: 1.05rem;
-    margin-bottom: 12px;
+    font-size: 1.6rem; /* ↑ 50% */
+    margin-bottom: 18px;
   }
   
   .school {
-    padding: 14px;
-    border-radius: 12px;
+    padding: 22px;
+    border-radius: 18px;
     background: #ffffff;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
-    margin-bottom: 12px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+    margin-bottom: 18px;
   }
   
   .school strong {
     display: block;
-    font-size: 0.95rem;
+    font-size: 1.4rem; /* ↑ 50% */
     font-weight: 600;
   }
   
   .school span {
-    font-size: 0.8rem;
+    font-size: 1.2rem; /* ↑ 50% */
     color: #6b7280;
   }
   
@@ -117,19 +117,19 @@
     }
   
     .container {
-      max-width: 520px;
-      margin: 40px auto;
-      padding: 28px;
+      max-width: 640px;
+      margin: 48px auto;
+      padding: 40px;
       background: #ffffff;
-      border-radius: 16px;
-      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+      border-radius: 22px;
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.1);
     }
   }
   
   /* ===== Desktop refinement ===== */
   @media (min-width: 1024px) {
     .container {
-      max-width: 560px;
+      max-width: 700px;
     }
   }
   
